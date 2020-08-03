@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Proyectos</h1>
+    <mat-grid-list [cols]="changeCols" rowHeight="2:1.5" (window:resize)="onResize($event)">
+            <mat-grid-tile *ngFor="let project of projects" class="project">                
+                <a [routerLink]="['/proyecto', project._id]">
+                    <div class="image">
+                        <img src="{{url+'get-image/'+project.image}}" *ngIf="project.image">
+                    </div>
+                    <div class="data-project">
+                        <h3>{{project.name}}</h3>
+                        <p>{{project.category}}</p>
+                    </div>
+                </a>
+            </mat-grid-tile>
+    </mat-grid-list>
+</div>

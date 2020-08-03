@@ -1,0 +1,37 @@
+<div class="container contact">
+  <h2>{{title}}</h2>
+
+    <form #form="ngForm" (ngSubmit)="contactForm(form.value)">
+        <p>
+            <label for="enterprise">Empresa</label>
+            <input type="text" name="enterprise" ngModel/>
+        </p>
+
+        <p>
+            <label for="namelast">Nombre y Apellido</label>
+            <input type="text" name="namelast" ngModel/>
+        </p>
+
+        <p>
+            <label for="phone">Numero de teléfono</label>
+            <input type="text" name="phone" ngModel/>
+        </p>
+
+        <p>
+            <label for="email">Mail</label>
+            <input type="email" name="email" ngModel/>
+        </p>
+
+        <p>
+            <label for="address">Dirección</label>
+            <input type="text" name="address" ngModel/>
+        </p>
+
+        <p>
+            <label for="comment">Mensaje</label>
+            <textarea type="text" name="comment" ngModel></textarea>
+        </p>
+
+        <input type="submit" value="Enviar" />
+    </form>
+</div>

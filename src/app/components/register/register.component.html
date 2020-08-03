@@ -1,0 +1,8 @@
+<div class="register">
+    <form class="custom-form" (ngSubmit)="userRegister()">
+        <input id="userinput" type="text" name="usuario" placeholder="Usuario" #username="ngModel" [(ngModel)]="user.username" required><br>
+        <input type="email" name="email" placeholder="Email" #email="ngModel" [(ngModel)]="user.email" required>
+        <input type="password" name="password" placeholder="Contraseña" #password="ngModel" [(ngModel)]="user.password" required>
+        <input type="submit" value="Registrar">
+    </form>
+</div>

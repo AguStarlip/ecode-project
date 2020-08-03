@@ -1,0 +1,59 @@
+<header class="flex-container">
+  <li id="logo"><a href="#"><img src="assets/img/headerlogo.png" alt="headerlogo"></a></li>
+  <ul>
+    <mat-menu id="menu" #appMenu="matMenu" xPosition="before" yPosition="above">
+      <button mat-menu-item><li><a [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']">Sobre mi</a></li></button>
+      <button mat-menu-item><li><a [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">Proyectos</a></li></button>
+      <button mat-menu-item><li><a [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a></li></button>
+      <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+        <button mat-menu-item><li><a [routerLink]="['/login']" [routerLinkActive]="['actived']">Login</a></li></button>
+        <button mat-menu-item><li><a [routerLink]="['/register']" [routerLinkActive]="['actived']">Register</a></li></button>
+      </ng-container>
+      <ng-template #loggedIn>
+        <button mat-menu-item><li id="logout"><a (click)="authService.logOut()">Logout</a></li></button>
+      </ng-template>
+      <button id="save" mat-menu-item><li *ngIf="authService.authAdmin()"><a [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']">Crear proyecto</a></li></button>
+    </mat-menu>
+    <button class="menu-button" mat-flat-button [matMenuTriggerFor]="appMenu"><mat-icon>menu</mat-icon></button>
+  </ul>
+  <ul class="show-menu">
+    <li><a [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']">Sobre mi</a></li>
+    <li><a [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">Proyectos</a></li>
+    <li *ngIf="authService.authAdmin()"><a id="saveproject" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']">+Proyecto</a></li>
+    <li id="contact"><a [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a></li>
+    <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+      <li><a [routerLink]="['/login']" [routerLinkActive]="['actived']">Login</a></li>
+      <li><a id="register" [routerLink]="['/register']" [routerLinkActive]="['actived']">Register</a></li>
+    </ng-container>
+    <ng-template #loggedIn>
+      <li id="logout"><a (click)="authService.logOut()">Logout</a></li>
+    </ng-template>
+  </ul>
+</header>
+
+<section id="content">
+  <router-outlet></router-outlet>
+</section>
+
+<footer>
+  <div class="content1">
+    <h3>Qué servicios brindo?</h3>
+    <p>
+      <span>Webs de negocios</span><br>
+      <span>Webs a medida</span><br>
+      <span>Tiendas online</span><br>
+      <span>Consultoría IT</span>
+    </p>
+  </div>
+  <div class="content2">
+    <h3>Sígueme en las redes</h3>
+    <span><a href="http://www.instagram.com/agustellar/" target="blank"><img src="assets/img/insta-ico.png" alt="instagram"></a></span>
+    <span><a href="http://linkedin.com/in/agustín-lipchak-4b32391a3" target="blank"><img src="assets/img/linked-ico.png" alt="linkedin"></a></span>
+    <span><a href="http://github.com/AguStarlip" target="blank"><img src="assets/img/git-ico.png" alt="github"></a></span>
+  </div>
+  <div class="content3">
+    <h3>Ve mis proyectos</h3>
+    <p>Puedes ver mis proyectos pinchando<a [routerLink]="['/proyectos']"> aquí</a></p>
+  </div>
+  <!--<span>Create by: Agustín Lipchak&#169;</span>!-->
+</footer>
